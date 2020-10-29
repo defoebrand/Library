@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,15 +22,17 @@
 			<p>These books are available for rent:</p>
 			<ul class="bookShelf"></ul>
 		</div>
-		<form id="add-book">
-			<input type="text" placeholder="Add author..." />
-			<input type="text" placeholder="Add title..." />
-			<input type="number" placeholder="Number of pages..." />
-
-			<!-- <label>Show form</label>
-			<input type="checkbox" id="show-hide" /> -->
-		</form>
-		<button type="button" id="newBookButton">Add New Book</button>
+		<div class="add-book">
+			<input type="text" name="addTitle" placeholder="Add title..." />
+			<input type="text" name="addAuthor" placeholder="Add author..." />
+			<input type="number" name="addPages" placeholder="Number of pages..." />
+			<div>
+				<label for="haveRead">Have Read</label>
+				<input type="checkbox" id="haveRead" name="haveRead">
+			</div>
+			<input type="submit" value="Add" class="submitForm" />
+		</div>
+		<button type="button" id="newBookButton">New Book</button>
 
 		<div id="hide">
 			<a href="https://defoebrand.github.io/">GitHub</a>
@@ -38,4 +41,5 @@
 
 		<script src="scripts/test.js"></script>
 	</body>
+
 </html>

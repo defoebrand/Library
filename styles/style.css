@@ -57,6 +57,20 @@ h1 {
   font-size: 15px;
 }
 
-.active, #menuBtn:hover {
+.active,
+#menuBtn:hover {
   background-color: #ccc;
+}
+
+.add-book {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 150px;
+  margin-top: 15px;
+}
+
+.hide {
+  display: none;
 }
