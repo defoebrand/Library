@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="keywords" content="keyword1, keyword2, keyword3" />
+		<meta name="description" content="describe the page" />
+		<meta name="author" content="Brandon Defoe" />
+		<link rel="icon" type="image/png" href="/icon.png" />
+		<link rel="apple-touch-icon" type="image/png" href="/icon.png" />
+		<!--Apple Compatibility1-->
+		<title>The Defoe Brand Template</title>
+		<!-- <link href="styles/reset.css" rel="stylesheet" type="text/css"> use to erase preset styles as debug tool -->
+		<link href="styles/style.css" rel="stylesheet" type="text/css" />
+	</head>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="keyword1, keyword2, keyword3">
-    <meta name="description" content="describe the page">
-    <meta name="author" content="Brandon Defoe">
-    <link rel="icon" type="image/png" href="/icon.png">
-    <link rel="apple-touch-icon" type="image/png" href="/icon.png" />
-    <!--Apple Compatibility1-->
-    <title>The Defoe Brand Template</title>
-    <!-- <link href="styles/reset.css" rel="stylesheet" type="text/css"> use to erase preset styles as debug tool -->
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
-  </head>
+	<body>
+		<div id="atom-preview">
+			<h1>Hello! Welcome!</h1>
+			<p>This is a library.</p>
+			<p>These books are available for rent:</p>
+			<ul class="bookShelf"></ul>
+		</div>
+		<form id="add-book">
+			<input type="text" placeholder="Add author..." />
+			<input type="text" placeholder="Add title..." />
+			<input type="number" placeholder="Number of pages..." />
 
-  <body>
+			<!-- <label>Show form</label>
+			<input type="checkbox" id="show-hide" /> -->
+		</form>
+		<button type="button" id="newBookButton">Add New Book</button>
 
-    <div id="atom-preview">
-      <h1>Hello! Welcome!</h1>
-      <p>This is a library.</p>
-      <p>These books are available for rent:
-      </p>
-      <ul class='bookShelf'></ul>
-    </div>
-    <button type="button" id="newBookButton">Add New Book</button>
-    <div id="hide">
-      <a href="https://defoebrand.github.io/">GitHub</a>
-      <a href="https://defoebrand.linkedin.com/">LinkedIn</a>
-    </div>
+		<div id="hide">
+			<a href="https://defoebrand.github.io/">GitHub</a>
+			<a href="https://defoebrand.linkedin.com/">LinkedIn</a>
+		</div>
 
-    <script src="scripts/test.js"></script>
-  </body>
-
+		<script src="scripts/test.js"></script>
+	</body>
 </html>
