@@ -1,19 +1,8 @@
-
 let myLibrary = []
 
 const bookShelf = document.querySelector('.bookShelf');
 
 const addForm = document.querySelector('.add-book');
-
-const submitForm = document.querySelector('.submitForm')
-submitForm.onclick = () => {
-  title = addForm.firstElementChild.value;
-  author = addForm.firstElementChild.nextElementSibling.value;
-  pages = addForm.firstElementChild.nextElementSibling.nextElementSibling.value;
-  read = checkIfRead();
-  addBookToLibrary(title, author, pages, read)
-  addBookToShelf();
-}
 
 const newBookButton = document.getElementById('newBookButton');
 
@@ -21,17 +10,28 @@ newBookButton.onclick = () => {
   addForm.classList.toggle('hide');
 };
 
+const submitForm = document.querySelector('.submitForm')
+submitForm.onclick = () => {
+  title = addForm.firstElementChild.value;
+  author = addForm.firstElementChild.nextElementSibling.value;
+  pages = addForm.firstElementChild.nextElementSibling.nextElementSibling.value;
+  read = checkIfRead(addForm.lastElementChild.previousElementSibling.lastElementChild.checked);
+  addBookToLibrary(title, author, pages, read)
+  addBookToShelf();
+}
+
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
   this.pages = pages
+  this.read = read
   this.info = function() {
-    return (title + " by " + author + ", " + pages + " pages, ")
+    return (title + " by " + author + ", " + pages + " pages ")
   }
 }
 
-function checkIfRead() {
-  if (addForm.lastElementChild.previousElementSibling.lastElementChild.checked == true) {
+function checkIfRead(checked) {
+  if (checked == true) {
     return 'Read It'
   } else {
     return "Haven't Read It"
@@ -49,20 +49,40 @@ function addBookToShelf() {
   bookToShelve.innerText = myLibrary[myLibrary.length - 1].info();
 
   let deleteBook = document.createElement('span');
-  deleteBook.innerText = " - Delete From Library"
+  deleteBook.innerText = " - Delete From Library - "
   deleteBook.onclick = function() {
     myLibrary.splice(bookToShelve.index, 1);
     bookShelf.removeChild(bookToShelve);
   }
+      //
+      let readBox = document.createElement('input')
+      readBox.type = 'checkbox'
+      let readBook = document.createElement('span');
+      readBook.innerText = myLibrary[myLibrary.length - 1].read;
+      if (readBook.innerText == "Read It"){
+        readBook.classList.add('text-green');
+          readBox.checked = true;
+      } else {
+        readBook.classList.add('text-red');
+        readBox.checked = false;
+      }
+      readBox.onchange = () => {
+            if (readBox.checked == true) {
+                readBook.innerText = "Read It"
+                readBook.classList.remove('text-red')
+                readBook.classList.add('text-green')
+            }else{
+                 readBook.innerText = "Haven't Read It"
+                 readBook.classList.remove('text-green')
+                 readBook.classList.add('text-red')
+            }
+      }
+
+
   bookToShelve.appendChild(deleteBook);
-  bookShelf.appendChild(bookToShelve)
-
-
-  bookToShelve.appendChild(readBoxLabel);
-  bookShelf.appendChild(bookToShelve)
-
-
   bookToShelve.appendChild(readBox);
+  bookToShelve.appendChild(readBook);
+
   bookShelf.appendChild(bookToShelve)
 
 }
@@ -74,34 +94,60 @@ function putBooksOnTheShelf() {
 
 
     let deleteBook = document.createElement('span');
-    deleteBook.innerText = " - Delete From Library"
+    deleteBook.innerText = " - Delete From Library - "
     deleteBook.onclick = function() {
       myLibrary.splice(shelvedBook.index, 1);
       bookShelf.removeChild(shelvedBook);
     }
-    shelvedBook.read;
+
+    let readBox = document.createElement('input')
+    readBox.type = 'checkbox'
+
+    readBox.onchange = () => {
+      if (readBox.checked){
+        readBook.innerText = "Read It"
+        readBook.classList.remove('text-red')
+        readBook.classList.add('text-green')
+    } else {
+        readBook.innerText = "Haven't Read It"
+        readBook.classList.remove('text-green')
+        readBook.classList.add('text-red')
+      }
+    }
+
+    let readBook = document.createElement('span');
+    readBook.innerText = myLibrary[i].read;
+    if (readBook.innerText == "Read It"){
+      readBox.checked = true;
+      readBook.classList.add('text-green');
+    } else {
+      readBook.classList.add('text-red');
+      readBox.checked = false;
+    }
+    readBox.onchange = () => {
+          if (readBox.checked == true) {
+              readBook.innerText = "Read It"
+              readBook.classList.remove('text-red')
+              readBook.classList.add('text-green')
+          }else{
+               readBook.innerText = "Haven't Read It"
+               readBook.classList.remove('text-green')
+               readBook.classList.add('text-red')
+          }
+    }
+
+
     shelvedBook.appendChild(deleteBook);
+
+    shelvedBook.appendChild(readBox);
+    shelvedBook.appendChild(readBook);
+
     bookShelf.appendChild(shelvedBook);
 
   }
 
 }
 
-// Toggle Books ReadStatus
-
-
-readBox.addEventListener('change',()=>{
-    if (readBox.checked) {
-        readBoxLabel.textContent = "Have read already"
-        readBoxLabel.classList.remove('text-red')
-        readBoxLabel.classList.add('text-green')
-
-    }else{
-         readBoxLabel.textContent = "Have not been read"
-         readBoxLabel.classList.add('text-red')
-
-    }
-})
 
 
 
