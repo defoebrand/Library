@@ -1,11 +1,3 @@
-let readBox = document.createElement('input')
-readBox.setAttribute('type', 'checkbox')
-readBox.setAttribute('id', 'status')
-
-let readBoxLabel = document.createElement('label')
-readBoxLabel.textContent = "Have not been read"
-readBoxLabel.setAttribute('for', 'status')
-readBoxLabel.classList.add('text-red')
 
 let myLibrary = []
 
@@ -65,21 +57,21 @@ function addBookToShelf() {
   bookToShelve.appendChild(deleteBook);
   bookShelf.appendChild(bookToShelve)
 
-  
+
   bookToShelve.appendChild(readBoxLabel);
   bookShelf.appendChild(bookToShelve)
 
-  
+
   bookToShelve.appendChild(readBox);
   bookShelf.appendChild(bookToShelve)
-  
+
 }
 
 function putBooksOnTheShelf() {
   for (let i = 0; i <= myLibrary.length - 1; i++) {
     let shelvedBook = document.createElement('li');
     shelvedBook.innerText = myLibrary[i].info();
-    
+
 
     let deleteBook = document.createElement('span');
     deleteBook.innerText = " - Delete From Library"
@@ -90,17 +82,10 @@ function putBooksOnTheShelf() {
     shelvedBook.read;
     shelvedBook.appendChild(deleteBook);
     bookShelf.appendChild(shelvedBook);
-  
+
   }
-  
-}
 
-function deleteBook(index) {
- myLibrary.splice(index, 1);
 }
-
-const ul = document.querySelector('.bookShelf')
-ul.addEventListener('click',deleteBook)
 
 // Toggle Books ReadStatus
 
@@ -110,11 +95,11 @@ readBox.addEventListener('change',()=>{
         readBoxLabel.textContent = "Have read already"
         readBoxLabel.classList.remove('text-red')
         readBoxLabel.classList.add('text-green')
-        
+
     }else{
          readBoxLabel.textContent = "Have not been read"
          readBoxLabel.classList.add('text-red')
-         
+
     }
 })
 
