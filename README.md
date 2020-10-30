@@ -21,7 +21,7 @@
 -   CSS
 -   HTML5
 
-## Feature upgrades:
+## Future upgrades:
 
 -   Add more styling to the page
 
