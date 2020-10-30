@@ -13,7 +13,7 @@
 -   Button on each book’s display to change its read status.
 -   Used localstorage to store book data
 
-## ![screenshot](app/assets/images/life-n-style.png)
+## ![screenshot](images/screenshot.png)
 
 ## Built With
 
