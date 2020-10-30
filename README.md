@@ -6,26 +6,24 @@
 
 # Project Specification
 
-- Create and store books in a Book object.
-- Displays each book on the page.
-- “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want.
-- Button on each book’s display to remove the book from the library.
-- Button on each book’s display to change its read status.
-- Used localstorage to store book data
+-   Create and store books in a Book object.
+-   Displays each book on the page.
+-   “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want.
+-   Button on each book’s display to remove the book from the library.
+-   Button on each book’s display to change its read status.
+-   Used localstorage to store book data
 
 ## ![screenshot](app/assets/images/life-n-style.png)
 
-
 ## Built With
 
-- JavaScript
-- CSS
-- HTML5
-
+-   JavaScript
+-   CSS
+-   HTML5
 
 ## Feature upgrades:
 
-- Add more styling to the page
+-   Add more styling to the page
 
 ## Prerequisities
 
@@ -45,21 +43,19 @@ Run `Open in any IDE of your choice`.<br>
 **Step 4**<br>
 Run `Double click on index.html`.<br>
 
-
 ## Authors
 
 👤 **Brandon Defoe**
 
-- Github: [@defoebrand](https://github.com/defoebrand)
-- LinkedIn: [@defoebrand](https://www.linkedin.com/in/defoebrand/)
-- Gmail: <mailto:defoe.brand@gmail.com>
+-   Github: [@defoebrand](https://github.com/defoebrand)
+-   LinkedIn: [@defoebrand](https://www.linkedin.com/in/defoebrand/)
+-   Gmail: <mailto:defoe.brand@gmail.com>
 
 👤 **Marshall Akpan**
 
-- Github: [uimarshall](https://github.com/uimarshall)
-- Twitter: [uimarshall](https://twitter.com/uimarshall)
-- Linkedin: [Marshall Akpan](https://www.linkedin.com/in/marshall-akpan/)
-
+-   Github: [uimarshall](https://github.com/uimarshall)
+-   Twitter: [uimarshall](https://twitter.com/uimarshall)
+-   Linkedin: [Marshall Akpan](https://www.linkedin.com/in/marshall-akpan/)
 
 ## 🤝 Contributing
 
@@ -73,12 +69,11 @@ If you've read this far....give us a ⭐️!
 
 ## :clap: Acknowledgements
 
-- Microverse
-- Odin Project
-
+-   Microverse
+-   Odin Project
 
 ## 📝 License
 
 This project is licensed by Microverse and the Odin Project
 
-- ...
+-   ...
