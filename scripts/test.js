@@ -56,6 +56,13 @@ function putBooksOnTheShelf() {
   }
 }
 
+function deleteBook(index) {
+ myLibrary.splice(index, 1);
+}
+
+const ul = document.querySelector('.bookShelf')
+ul.addEventListener('click',deleteBook)
+
 
 
 
