@@ -21,6 +21,11 @@ newBookButton.onclick = () => {
 
 const submitForm = document.querySelector('.submitForm');
 
+const title = document.getElementById('addTitle');
+const author = document.getElementById('addAuthor');
+const pages = document.getElementById('addPages');
+const checkbox = document.getElementById('haveRead');
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -40,9 +45,12 @@ function addDeleteButton(bookToShelve) {
   deleteBook.innerText = ' - Delete From Library - ';
   deleteBook.onclick = () => {
     localStorage.clear();
+    // console.log(localStorage);
     myLibrary.splice(bookToShelve.index, 1);
+    // console.log(myLibrary);
     bookShelf.removeChild(bookToShelve);
     localStorage.myLibrary = JSON.stringify(myLibrary);
+    window.location.reload();
   };
   bookToShelve.appendChild(deleteBook);
 }
@@ -75,7 +83,6 @@ function addReadButton(bookToShelve, spot) {
   bookToShelve.appendChild(readBook);
 }
 
-
 function shelveTheBook(spot) {
   const bookToShelve = document.createElement('li');
   bookToShelve.index = spot;
@@ -88,11 +95,7 @@ function shelveTheBook(spot) {
 }
 
 
-function addBookToLibrary() {
-  const title = document.getElementById('addTitle');
-  const author = document.getElementById('addAuthor');
-  const pages = document.getElementById('addPages');
-  const checkbox = document.getElementById('haveRead');
+function addBookToLibrary(title, author, pages, checkbox) {
   const read = checkIfRead(checkbox.checked);
   const newBook = new Book(title.value, author.value, pages.value, read);
   newBook.index = myLibrary.length;
@@ -105,11 +108,29 @@ function addBookToLibrary() {
   checkbox.checked = false;
 }
 
+function validateFields(input) {
+  if (input.value.trim() === '') {
+    input.focus();
+    return false;
+  }
+  return true;
+}
+
+function validateInput() {
+  return [
+    title,
+    author,
+    pages,
+  ].every(validateFields);
+}
+
 function putBooksOnTheShelf() {
   for (let i = 0; i <= myLibrary.length - 1; i += 1) {
     shelveTheBook(i);
     submitForm.onclick = () => {
-      addBookToLibrary();
+      if (validateInput() === true) {
+        addBookToLibrary(title, author, pages, checkbox);
+      }
     };
   }
 }
