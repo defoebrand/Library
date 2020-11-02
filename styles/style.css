@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+}
+
+h1 {
+  text-align: center;
+}
+
+.add-book {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 150px;
+  margin-top: 15px;
+}
+
+.show {
+  display: flex;
+}
+
+.text-green {
+  color: green;
+  margin-left: 10px;
+}
+
+.text-red {
+  color: red;
+  margin-left: 10px;
+}
