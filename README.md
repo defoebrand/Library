@@ -4,14 +4,14 @@
 
 # JS_Library app build with JavaScript (DOM and Objects)
 
-# Project Specification
+# Project Description
 
--   Create and store books in a Book object.
--   Displays each book on the page.
--   “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want.
--   Button on each book’s display to remove the book from the library.
--   Button on each book’s display to change its read status.
--   Used localstorage to store book data
+-  A user should be able to create and store books in a Book object.
+-  The books are  displayed on the page.
+-  There is a “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read.
+- There should be a button on each book’s display to remove the book from the library.
+- There should be a button on each book’s display to change its read status.
+- localstorage was used to store book data.
 
 ## ![screenshot](images/screenshot.png)
 
@@ -34,14 +34,17 @@ To get this project up and running locally, you must have chrome, Mozilla Firefo
 **To get this project set up on your local machine, follow these simple steps:**
 
 **Step 1**<br>
-Navigate through the local folder where you want to clone the repository and run
+- Navigate through the local folder where you want to clone the repository and run
 `git clone https://github.com/defoebrand/Library.git`.<br>
+
 **Step 2**<br>
-Run `cd Library`.<br>
+- Navigate to folder where the project is clone.<br>
+  
 **Step 3**<br>
-Run `Open in any IDE of your choice`.<br>
-**Step 4**<br>
-Run `Double click on index.html`.<br>
+- Open the index.html in a browser of your choice.<br>
+
+ **Step 4**<br>
+- Input data into form and submit
 
 ## Authors
 
