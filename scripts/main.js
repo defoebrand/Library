@@ -35,30 +35,23 @@ function checkIfRead(checked) {
   return "Haven't Read It";
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
-  newBook.index = myLibrary.length;
-  myLibrary.push(newBook);
-  localStorage.myLibrary = JSON.stringify(myLibrary);
-}
-
-function shelveTheBook(spot) {
-  const bookToShelve = document.createElement('li');
-  bookToShelve.innerText = `${myLibrary[spot].title} by ${myLibrary[spot].author}, ${myLibrary[spot].pages} pages `;
-
+function addDeleteButton(bookToShelve) {
   const deleteBook = document.createElement('span');
   deleteBook.innerText = ' - Delete From Library - ';
   deleteBook.onclick = () => {
+    localStorage.clear();
     myLibrary.splice(bookToShelve.index, 1);
     bookShelf.removeChild(bookToShelve);
+    localStorage.myLibrary = JSON.stringify(myLibrary);
   };
+  bookToShelve.appendChild(deleteBook);
+}
 
+function addReadButton(bookToShelve, spot) {
   const readBox = document.createElement('input');
   readBox.type = 'checkbox';
-
   const readBook = document.createElement('span');
   readBook.innerText = myLibrary[spot].read;
-
   if (readBook.innerText === 'Read It') {
     readBook.classList.add('text-green');
     readBox.checked = true;
@@ -66,7 +59,6 @@ function shelveTheBook(spot) {
     readBook.classList.add('text-red');
     readBox.checked = false;
   }
-
   readBox.onchange = () => {
     if (readBox.checked === true) {
       readBook.innerText = 'Read It';
@@ -79,25 +71,46 @@ function shelveTheBook(spot) {
     }
   };
 
-  bookToShelve.appendChild(deleteBook);
   bookToShelve.appendChild(readBox);
   bookToShelve.appendChild(readBook);
+}
+
+
+function shelveTheBook(spot) {
+  const bookToShelve = document.createElement('li');
+  bookToShelve.index = spot;
+  bookToShelve.innerText = `${myLibrary[spot].title} by ${myLibrary[spot].author}, ${myLibrary[spot].pages} pages `;
+
+  addDeleteButton(bookToShelve);
+  addReadButton(bookToShelve, spot);
+
   bookShelf.appendChild(bookToShelve);
 }
 
-submitForm.onclick = () => {
-  const title = addForm.firstElementChild.value;
-  const author = addForm.firstElementChild.nextElementSibling.value;
-  const pages = addForm.firstElementChild.nextElementSibling.nextElementSibling.value;
-  const checkbox = addForm.lastElementChild.previousElementSibling.lastElementChild;
+
+function addBookToLibrary() {
+  const title = document.getElementById('addTitle');
+  const author = document.getElementById('addAuthor');
+  const pages = document.getElementById('addPages');
+  const checkbox = document.getElementById('haveRead');
   const read = checkIfRead(checkbox.checked);
-  addBookToLibrary(title, author, pages, read);
+  const newBook = new Book(title.value, author.value, pages.value, read);
+  newBook.index = myLibrary.length;
+  myLibrary.push(newBook);
+  localStorage.myLibrary = JSON.stringify(myLibrary);
   shelveTheBook(myLibrary.length - 1);
-};
+  title.value = '';
+  author.value = '';
+  pages.value = '';
+  checkbox.checked = false;
+}
 
 function putBooksOnTheShelf() {
   for (let i = 0; i <= myLibrary.length - 1; i += 1) {
     shelveTheBook(i);
+    submitForm.onclick = () => {
+      addBookToLibrary();
+    };
   }
 }
 
