@@ -26,12 +26,19 @@ const author = document.getElementById('addAuthor');
 const pages = document.getElementById('addPages');
 const checkbox = document.getElementById('haveRead');
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
+
+const bookFactory = (title, author, pages, read) => ({
+  title,
+  author,
+  pages,
+  read,
+});
 
 function checkIfRead(checked) {
   if (checked === true) {
@@ -97,7 +104,7 @@ function shelveTheBook(spot) {
 
 function addBookToLibrary(title, author, pages, checkbox) {
   const read = checkIfRead(checkbox.checked);
-  const newBook = new Book(title.value, author.value, pages.value, read);
+  const newBook = bookFactory(title.value, author.value, pages.value, read);
   newBook.index = myLibrary.length;
   myLibrary.push(newBook);
   localStorage.myLibrary = JSON.stringify(myLibrary);
@@ -127,12 +134,12 @@ function validateInput() {
 function putBooksOnTheShelf() {
   for (let i = 0; i <= myLibrary.length - 1; i += 1) {
     shelveTheBook(i);
-    submitForm.onclick = () => {
-      if (validateInput() === true) {
-        addBookToLibrary(title, author, pages, checkbox);
-      }
-    };
   }
+  submitForm.onclick = () => {
+    if (validateInput() === true) {
+      addBookToLibrary(title, author, pages, checkbox);
+    }
+  };
 }
 
 putBooksOnTheShelf();
