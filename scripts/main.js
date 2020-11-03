@@ -33,12 +33,23 @@ const checkbox = document.getElementById('haveRead');
 //   this.read = read;
 // }
 
-const bookFactory = (title, author, pages, read) => ({
-  title,
-  author,
-  pages,
-  read,
-});
+// const bookFactory = (title, author, pages, read) => {
+//   return {
+//     title,
+//     author,
+//     pages,
+//     read
+//   };
+// }
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+}
 
 function checkIfRead(checked) {
   if (checked === true) {
@@ -104,7 +115,7 @@ function shelveTheBook(spot) {
 
 function addBookToLibrary(title, author, pages, checkbox) {
   const read = checkIfRead(checkbox.checked);
-  const newBook = bookFactory(title.value, author.value, pages.value, read);
+  const newBook = new Book(title.value, author.value, pages.value, read);
   newBook.index = myLibrary.length;
   myLibrary.push(newBook);
   localStorage.myLibrary = JSON.stringify(myLibrary);
