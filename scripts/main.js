@@ -1,5 +1,19 @@
 const myLibrary = [];
 
+const bookLibFactory = (title, author, pages, read) => {
+ 
+   return {
+    title,
+    author,
+    pages,
+    read,
+  };
+
+ 
+};
+
+
+
 if (localStorage.myLibrary) {
   const storage = JSON.parse(localStorage.myLibrary);
   const {
@@ -26,12 +40,12 @@ const author = document.getElementById('addAuthor');
 const pages = document.getElementById('addPages');
 const checkbox = document.getElementById('haveRead');
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
 
 function checkIfRead(checked) {
   if (checked === true) {
@@ -97,7 +111,8 @@ function shelveTheBook(spot) {
 
 function addBookToLibrary(title, author, pages, checkbox) {
   const read = checkIfRead(checkbox.checked);
-  const newBook = new Book(title.value, author.value, pages.value, read);
+  // const newBook = new Book(title.value, author.value, pages.value, read);
+  const newBook = bookLibFactory(title.value, author.value, pages.value, read);
   newBook.index = myLibrary.length;
   myLibrary.push(newBook);
   localStorage.myLibrary = JSON.stringify(myLibrary);
